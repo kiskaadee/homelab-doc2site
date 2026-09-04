@@ -1,25 +1,40 @@
 # 📚 Homelab Doc2Site (Documentation Viewer)
 
-Reactive documentation static site generator and viewer for personal knowledge docs and study guides.
-
-Part of the [homelab-core](https://github.com/kiskaadee/homelab-core) cluster ecosystem.
+Reactive documentation static site generator and viewer for the `roadtotech.me` knowledge vault (`~/Brain`).
 
 ---
 
 ## 🏗️ Architecture & Requirements
 
-- **Proxy**: Traefik (attached to `proxy-net`)
-- **Port**: `8000` (FastAPI/Static service)
+- **Proxy Network**: Attached to external `proxy-net`
 - **Domain**: `docs.roadtotech.me`
+- **Target Port**: `8000` (FastAPI/Static service)
+- **Docs Root Source**: `/home/kiskaadee/Brain` (mounted read-only to `/docs:ro`)
 
 ---
 
-## ⚙️ Environment Variables
+## ⚙️ Configuration & Metadata (`app.yaml`)
 
-| Variable | Description | Default / Example |
-| :--- | :--- | :--- |
-| `DOCS_DOMAIN` | Routed FQDN | `docs.roadtotech.me` |
-| `DOCS_PROJECT_PATH` | Path to docs source | `~/Brain` |
+```yaml
+name: "docs"
+aliases:
+  - "doc2site"
+  - "notes"
+domain: "docs.roadtotech.me"
+description: "Reactive Obsidian & Markdown Documentation Viewer"
+visible: true
+auth: false
+networks:
+  - proxy-net
+env:
+  PROJECT_PATH: "/home/kiskaadee/Brain"
+homepage:
+  title: "Docs-Viewer"
+  group: "Knowledge & Notes"
+  icon: "files.png"
+  container: "docs"
+  weight: 10
+```
 
 ---
 
@@ -27,10 +42,15 @@ Part of the [homelab-core](https://github.com/kiskaadee/homelab-core) cluster ec
 
 ### Via Orchestrator (`appctl`)
 ```bash
-appctl up homelab-doc2site
+appctl up docs
 ```
 
 ### Manual Deployment
 ```bash
-docker compose up --build -d
+docker compose up -d
 ```
+
+---
+
+## 📄 License
+This repository is released into the public domain under the [Unlicense](LICENSE).
