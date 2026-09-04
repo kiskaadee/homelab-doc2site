@@ -4,7 +4,7 @@ services:
     container_name: ${SERVICE_NAME:-docs}
     restart: unless-stopped
     volumes:
-      - ${PROJECT_PATH:-./data}:/docs:ro
+      - ${PROJECT_PATH:-/home/kiskaadee/Brain}:/docs:ro
       - ./app:/app:ro
     environment:
       - DOCS_ROOT=/docs

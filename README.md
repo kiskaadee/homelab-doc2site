@@ -10,7 +10,7 @@ Part of the [homelab-core](https://github.com/kiskaadee/homelab-core) cluster ec
 
 - **Proxy**: Traefik (attached to `proxy-net`)
 - **Port**: `8000` (FastAPI/Static service)
-- **Domain**: `docs.arch-services.mywire.org`
+- **Domain**: `docs.roadtotech.me`
 
 ---
 
@@ -18,8 +18,8 @@ Part of the [homelab-core](https://github.com/kiskaadee/homelab-core) cluster ec
 
 | Variable | Description | Default / Example |
 | :--- | :--- | :--- |
-| `DOCS_DOMAIN` | Routed FQDN | `docs.arch-services.mywire.org` |
-| `DOCS_PROJECT_PATH` | Path to docs source | Configured via environment |
+| `DOCS_DOMAIN` | Routed FQDN | `docs.roadtotech.me` |
+| `DOCS_PROJECT_PATH` | Path to docs source | `~/Brain` |
 
 ---
 
